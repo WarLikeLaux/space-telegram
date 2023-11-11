@@ -24,6 +24,8 @@ def main():
             random.shuffle(images_to_publish)
         photo_path = images_to_publish.pop()
         bot.send_photo(chat_id=channel_id, photo=open(photo_path, "rb"))
+        print(f"Successfully published {photo_path} to the Telegram channel with ID {channel_id}.")
+        print(f"Next post in {publish_frequency} minutes.")
         time.sleep(publish_frequency * SECONDS_IN_MINUTE)
 
 
