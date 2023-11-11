@@ -25,7 +25,6 @@ def main():
     )
     args = parser.parse_args()
     photo_path = args.photo_path or random.choice(get_images_from_path())
-    print(photo_path)
     bot.send_photo(chat_id=channel_id, photo=open(photo_path, "rb"))
 
 
