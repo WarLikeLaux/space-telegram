@@ -6,7 +6,7 @@ import requests
 from dotenv import load_dotenv
 
 load_dotenv()
-IMAGES_DIRECTORY = os.environ["IMAGES_DIRECTORY"]
+IMAGES_DIRECTORY = os.path.join(os.getcwd(), os.environ["IMAGES_DIRECTORY"])
 
 
 def save_image(url, filename, params={}):

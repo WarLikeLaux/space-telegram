@@ -23,7 +23,7 @@ def main():
             images_to_publish = get_images_from_path()
             random.shuffle(images_to_publish)
         photo_path = images_to_publish.pop()
-        bot.send_photo(chat_id=channel_id, photo=photo_path)
+        bot.send_photo(chat_id=channel_id, photo=open(photo_path, "rb"))
         time.sleep(publish_frequency * SECONDS_IN_MINUTE)
 
 
