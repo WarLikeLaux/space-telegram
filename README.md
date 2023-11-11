@@ -29,7 +29,6 @@
 - **Integration with Telegram API:** employs the Python Telegram Bot library for stable and efficient communication with the Telegram API.
 - **Support for Various Image Counts and Formats:** allows users to specify the number of images to be downloaded and manages their display and sharing in the Telegram channel.
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Installation
@@ -79,12 +78,11 @@ To set up your environment variables, you'll need to create a `.env` file in the
 - `IMAGES_DIRECTORY`: the path to the directory where images are stored. Specify the location on your computer or server where the downloaded photos will be saved.
 - `PUBLISH_FREQUENCY_IN_MINUTES`: the frequency, in minutes, at which photos are published to your Telegram channel. This parameter determines how often your bot will send photos to the channel.
 
-
 Please ensure that each environment variable is assigned the correct value.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Using Space Telegram
+## Usage
 
 To operate Space Telegram, follow these steps:
 
@@ -98,17 +96,17 @@ python fetch_nasa_apod_images.py [count]
 python fetch_nasa_epic_images.py [count]
 ```
 
-**3. Downloading SPACEX Images from a Specific Launch or the Latest:**
+**3. Downloading SpaceX Images from a Specific Launch or the Latest:**
 ```
 python fetch_spacex_images.py [launch_id]
 ```
 
-**4. Publishing a Specific or Random Photo from the Images Directory to a Telegram Channel at a Specific Frequency:**
+**4. Publishing a Specific or Random Photo from the Images Directory to a Telegram Channel:**
 ```
 python publish_photo_to_tg.py
 ```
 
-**5. Continuously Publishing All Photos from the Images Directory to a Telegram Channel:**
+**5. Continuously Publishing All Photos from the Images Directory to a Telegram Channel at a Specific Frequency:**
 ```
 python publish_photo_in_loop_to_tg.py
 ```
