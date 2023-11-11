@@ -15,7 +15,7 @@ def fetch_spacex_last_launch(launch_id="latest"):
     url = f"{SPACEX_BASE_URL}/v5/launches/{launch_id}"
     response = requests.get(url)
     response.raise_for_status()
-    links = response.json()['links']['flickr']['original']
+    links = response.json()["links"]["flickr"]["original"]
     if not links:
         raise NoImagesException("No images available for the given launch ID.")
     for key, link in enumerate(links):
@@ -27,11 +27,9 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "launch_id",
-        nargs='?',
+        nargs="?",
         default="latest",
-        help=(
-            "ID of launch, if not set - use latest"
-        )
+        help=("ID of launch, if not set - use latest"),
     )
     try:
         args = parser.parse_args()
