@@ -105,7 +105,7 @@ python fetch_spacex_images.py [launch_id]
 
 **4. Publishing a Specific or Random Photo from the Images Directory to a Telegram Channel at a Specific Frequency:**
 ```
-python publish_photo_to_tg.py [frequency]
+python publish_photo_to_tg.py
 ```
 
 **5. Continuously Publishing All Photos from the Images Directory to a Telegram Channel:**
@@ -113,7 +113,7 @@ python publish_photo_to_tg.py [frequency]
 python publish_photo_in_loop_to_tg.py
 ```
 
-Replace [count] with the number of images you want to download (default is set to 5), and [launch_id] with the ID of the launch to download images from (default is set to the latest launch).
+Replace `[count]` with the number of images you want to download (default is set to 5), and `[launch_id]` with the ID of the launch to download images from (default is set to the latest launch).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
