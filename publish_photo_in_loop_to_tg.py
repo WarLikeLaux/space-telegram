@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 from image_files_helpers import get_images_from_path
 
-SECONDS_IN_MINUTE = 3
+SECONDS_IN_MINUTE = 60
 
 
 def main():
