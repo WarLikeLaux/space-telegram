@@ -5,7 +5,7 @@ import time
 import telegram
 from dotenv import load_dotenv
 
-from image_files_helpers import get_images_from_path
+from image_files_helpers import get_images
 
 SECONDS_IN_MINUTE = 60
 
@@ -16,11 +16,11 @@ def main():
     channel_id = os.environ["TG_CHANNEL_ID"]
     publish_frequency = int(os.getenv("PUBLISH_FREQUENCY_IN_MINUTES", 240))
     bot = telegram.Bot(token=bot_token)
-    images_to_publish = get_images_from_path()
+    images_to_publish = get_images()
     random.shuffle(images_to_publish)
     while True:
         if not images_to_publish:
-            images_to_publish = get_images_from_path()
+            images_to_publish = get_images()
             random.shuffle(images_to_publish)
         photo_path = images_to_publish.pop()
         bot.send_photo(chat_id=channel_id, photo=open(photo_path, "rb"))

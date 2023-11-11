@@ -5,7 +5,7 @@ import random
 import telegram
 from dotenv import load_dotenv
 
-from image_files_helpers import get_images_from_path
+from image_files_helpers import get_images
 
 
 def main():
@@ -24,7 +24,7 @@ def main():
         ),
     )
     args = parser.parse_args()
-    photo_path = args.photo_path or random.choice(get_images_from_path())
+    photo_path = args.photo_path or random.choice(get_images())
     bot.send_photo(chat_id=channel_id, photo=open(photo_path, "rb"))
     print(
         f"Successfully published {photo_path}"

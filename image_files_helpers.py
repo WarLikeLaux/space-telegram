@@ -21,7 +21,7 @@ def get_file_extension(url):
     return os.path.splitext(path)[1].lower()
 
 
-def get_images_from_path():
+def get_images():
     images_files = []
     for filename in os.listdir(IMAGES_DIRECTORY):
         if get_file_extension(filename) in (".png", ".jpg", ".jpeg"):
