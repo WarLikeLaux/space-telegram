@@ -6,7 +6,6 @@ import telegram
 from dotenv import load_dotenv
 
 from image_files_helpers import get_images_from_path
-from tg_helpers import publish_photo_to_channel
 
 
 def main():
@@ -26,7 +25,7 @@ def main():
     )
     args = parser.parse_args()
     photo_path = args.photo_path or random.choice(get_images_from_path())
-    publish_photo_to_channel(bot, channel_id, photo_path)
+    bot.send_photo(chat_id=channel_id, photo=photo_path)
 
 
 if __name__ == "__main__":
