@@ -10,19 +10,19 @@ NASA_BASE_URL = "https://api.nasa.gov"
 
 
 def get_nasa_apod(api_key, count=5):
+    url = f"{NASA_BASE_URL}/planetary/apod"
     params = {
         "api_key": api_key,
         "count": count,
     }
-    url = f"{NASA_BASE_URL}/planetary/apod"
     response = requests.get(url, params=params)
     response.raise_for_status()
     images = response.json()
     for key, image in enumerate(images):
         if "hdurl" in image:
-            hdurl = image["hdurl"]
-            extension = get_file_extension(hdurl)
-            save_image(hdurl, f"nasa_apod_{key}{extension}")
+            hd_image_url = image["hdurl"]
+            extension = get_file_extension(hd_image_url)
+            save_image(hd_image_url, f"nasa_apod_{key}{extension}")
     return len(images)
 
 

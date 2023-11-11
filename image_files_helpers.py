@@ -21,11 +21,11 @@ def get_file_extension(url):
     return os.path.splitext(path)[1].lower()
 
 
-def get_images_from_path(images_path=IMAGES_DIRECTORY):
+def get_images_from_path():
     images_files = []
-    for filename in os.listdir(images_path):
+    for filename in os.listdir(IMAGES_DIRECTORY):
         if get_file_extension(filename) in (".png", ".jpg", ".jpeg"):
-            images_files.append(os.path.join(images_path, filename))
+            images_files.append(f"{IMAGES_DIRECTORY}/{filename}")
     return images_files
 
 

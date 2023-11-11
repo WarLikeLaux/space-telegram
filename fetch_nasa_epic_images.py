@@ -31,9 +31,10 @@ def get_nasa_epic(api_key, count=5):
         response.raise_for_status()
         data = response.json()
         image_id = data[0]["image"]
-        date = date.replace("-", "/")
+        date_formatted = date.replace("-", "/")
         image_url = (
-            f"{NASA_BASE_URL}/EPIC/archive/natural/{date}/png/{image_id}.png"
+            f"{NASA_BASE_URL}/EPIC/archive/natural/"
+            f"{date_formatted}/png/{image_id}.png"
         )
         save_image(image_url, f"nasa_epic_{key}.png", params)
     return len(dates)

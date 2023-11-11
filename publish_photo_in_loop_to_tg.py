@@ -14,7 +14,7 @@ def main():
     load_dotenv()
     bot_token = os.environ["TG_BOT_TOKEN"]
     channel_id = os.environ["TG_CHANNEL_ID"]
-    publish_frequency = int(os.environ["PUBLISH_FREQUENCY_IN_MINUTES"] or 240)
+    publish_frequency = int(os.getenv("PUBLISH_FREQUENCY_IN_MINUTES", 240))
     bot = telegram.Bot(token=bot_token)
     images_to_publish = get_images_from_path()
     random.shuffle(images_to_publish)
