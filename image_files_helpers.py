@@ -18,13 +18,13 @@ def save_image(url, filename, params={}):
 
 def get_file_extension(url):
     path = urllib.parse.urlparse(url).path
-    return os.path.splitext(path)[1]
+    return os.path.splitext(path)[1].lower()
 
 
 def get_images_from_path(images_path=IMAGES_DIRECTORY):
     images_files = []
     for filename in os.listdir(images_path):
-        if filename.lower().endswith((".png", ".jpg", ".jpeg", ".gif", ".bmp")):
+        if get_file_extension(filename) in (".png", ".jpg", ".jpeg"):
             images_files.append(os.path.join(images_path, filename))
     return images_files
 
