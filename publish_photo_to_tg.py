@@ -28,7 +28,7 @@ def main():
     bot.send_photo(chat_id=channel_id, photo=open(photo_path, "rb"))
     print(
         f"Successfully published {photo_path}"
-        " to the Telegram channel with ID {channel_id}."
+        f" to the Telegram channel with ID {channel_id}."
     )
 
 
