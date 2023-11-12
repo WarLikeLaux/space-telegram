@@ -43,13 +43,15 @@ def get_nasa_epic(api_key, count=5):
 def main():
     load_dotenv()
     nasa_api_key = os.environ["NASA_API_KEY"]
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description="Script for downloading NASA EPIC images."
+    )
     parser.add_argument(
         "count",
         nargs="?",
         default=5,
         type=int,
-        help=("Count of need EPIC images to download"),
+        help=("Count of need EPIC images to download, default is 5."),
     )
     args = parser.parse_args()
     count = args.count

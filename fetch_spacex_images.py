@@ -24,7 +24,12 @@ def fetch_spacex_last_launch(launch_id="latest"):
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description=(
+            "Script for downloading SpaceX images"
+            " from a specific launch or the latest."
+        )
+    )
     parser.add_argument(
         "launch_id",
         nargs="?",

@@ -13,7 +13,12 @@ def main():
     bot_token = os.environ["TG_BOT_TOKEN"]
     channel_id = os.environ["TG_CHANNEL_ID"]
     bot = telegram.Bot(token=bot_token)
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description=(
+            "Script for publishing a specific or random photo"
+            " from the images dDirectory to a telegram channel."
+        )
+    )
     parser.add_argument(
         "photo_path",
         nargs="?",

@@ -29,12 +29,14 @@ def get_nasa_apod(api_key, count=5):
 def main():
     load_dotenv()
     nasa_api_key = os.environ["NASA_API_KEY"]
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description="Script for downloading NASA APOD images."
+    )
     parser.add_argument(
         "count",
         nargs="?",
         default=5,
-        help=("Count of need APOD images to download")
+        help=("Count of need APOD images to download, default is 5.")
     )
     args = parser.parse_args()
     count = args.count

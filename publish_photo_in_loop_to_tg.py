@@ -1,3 +1,4 @@
+import argparse
 import os
 import random
 import time
@@ -15,6 +16,13 @@ def main():
     bot_token = os.environ["TG_BOT_TOKEN"]
     channel_id = os.environ["TG_CHANNEL_ID"]
     publish_frequency = int(os.getenv("PUBLISH_FREQUENCY_IN_MINUTES", 240))
+    parser = argparse.ArgumentParser(
+        description=(
+            "Script for continuously publishing all photos from the"
+            " images directory to a telegram channel at a specific frequency."
+        )
+    )
+    parser.parse_args()
     bot = telegram.Bot(token=bot_token)
     images_to_publish = get_images()
     random.shuffle(images_to_publish)
