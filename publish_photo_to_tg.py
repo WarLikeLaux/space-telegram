@@ -31,7 +31,7 @@ def main():
     args = parser.parse_args()
     photo_path = args.photo_path or random.choice(get_images())
     with open(photo_path, "rb") as photo:
-        bot.send_photo(chat_id=channel_id, photo=open(photo_path, "rb"))
+        bot.send_photo(chat_id=channel_id, photo=photo)
     print(
         f"Successfully published {photo_path}"
         f" to the Telegram channel with ID {channel_id}."
