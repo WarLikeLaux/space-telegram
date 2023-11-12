@@ -28,7 +28,7 @@ def get_nasa_apod(api_key, count=5):
 
 def main():
     load_dotenv()
-    NASA_API_KEY = os.environ["NASA_API_KEY"]
+    nasa_api_key = os.environ["NASA_API_KEY"]
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "count",
@@ -38,7 +38,7 @@ def main():
     )
     args = parser.parse_args()
     count = args.count
-    downloaded_images_count = get_nasa_apod(NASA_API_KEY, count)
+    downloaded_images_count = get_nasa_apod(nasa_api_key, count)
     print(f"Successfully downloaded {downloaded_images_count} images.")
 
 
