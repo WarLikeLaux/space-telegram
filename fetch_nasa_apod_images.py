@@ -19,10 +19,11 @@ def get_nasa_apod(api_key, count=5):
     response.raise_for_status()
     images = response.json()
     for key, image in enumerate(images):
-        if "hdurl" in image:
-            hd_image_url = image["hdurl"]
-            extension = get_file_extension(hd_image_url)
-            save_image(hd_image_url, f"nasa_apod_{key}{extension}")
+        if "hdurl" not in image:
+            continue
+        hd_image_url = image["hdurl"]
+        extension = get_file_extension(hd_image_url)
+        save_image(hd_image_url, f"nasa_apod_{key}{extension}")
     return len(images)
 
 
@@ -36,7 +37,7 @@ def main():
         "count",
         nargs="?",
         default=5,
-        help=("Count of need APOD images to download, default is 5.")
+        help="Count of need APOD images to download, default is 5."
     )
     args = parser.parse_args()
     count = args.count

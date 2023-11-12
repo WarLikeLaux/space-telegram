@@ -31,7 +31,8 @@ def main():
             images_to_publish = get_images()
             random.shuffle(images_to_publish)
         photo_path = images_to_publish.pop()
-        bot.send_photo(chat_id=channel_id, photo=open(photo_path, "rb"))
+        with open(photo_path, "rb") as photo:
+            bot.send_photo(chat_id=channel_id, photo=photo)
         print(
             f"Successfully published {photo_path}"
             f" to the Telegram channel with ID {channel_id}."

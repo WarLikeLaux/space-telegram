@@ -36,9 +36,9 @@ def main():
         default="latest",
         help=("ID of launch, if not set - use latest"),
     )
+    args = parser.parse_args()
+    launch_id = args.launch_id
     try:
-        args = parser.parse_args()
-        launch_id = args.launch_id
         downloaded_images_count = fetch_spacex_last_launch(launch_id)
         print(f"Successfully downloaded {downloaded_images_count} images.")
     except NoImagesException as e:
