@@ -29,8 +29,7 @@ def get_nasa_epic(api_key, count=5):
         url = f"{NASA_BASE_URL}/EPIC/api/natural/date/{date}"
         response = requests.get(url, params=params)
         response.raise_for_status()
-        data = response.json()
-        image_id = data[0]["image"]
+        image_id = response.json()[0]["image"]
         date_formatted = date.replace("-", "/")
         image_url = (
             f"{NASA_BASE_URL}/EPIC/archive/natural/"
