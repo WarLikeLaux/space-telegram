@@ -1,6 +1,7 @@
 import argparse
 import os
 
+from dotenv import load_dotenv
 import requests
 
 from image_files_helpers import save_image

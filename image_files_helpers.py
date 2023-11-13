@@ -3,7 +3,6 @@ import urllib
 from pathlib import Path
 
 import requests
-from dotenv import load_dotenv
 
 
 def save_image(url, filename, images_directory, params={}):
