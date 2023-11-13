@@ -20,7 +20,7 @@ def get_nasa_available_dates(api_key, count=5):
     return dates[-count:]
 
 
-def get_nasa_epic(api_key, count=5):
+def get_nasa_epic(api_key, images_directory, count=5):
     dates = get_nasa_available_dates(api_key, count)
     params = {
         "api_key": api_key,
@@ -35,13 +35,14 @@ def get_nasa_epic(api_key, count=5):
             f"{NASA_BASE_URL}/EPIC/archive/natural/"
             f"{date_formatted}/png/{image_id}.png"
         )
-        save_image(image_url, f"nasa_epic_{key}.png", params)
+        save_image(image_url, f"nasa_epic_{key}.png", images_directory, params)
     return len(dates)
 
 
 def main():
     load_dotenv()
     nasa_api_key = os.environ["NASA_API_KEY"]
+    images_directory = os.environ["IMAGES_DIRECTORY"]
     parser = argparse.ArgumentParser(
         description="Script for downloading NASA EPIC images."
     )
@@ -54,7 +55,7 @@ def main():
     )
     args = parser.parse_args()
     count = args.count
-    downloaded_images_count = get_nasa_epic(nasa_api_key, count)
+    downloaded_images_count = get_nasa_epic(nasa_api_key, images_directory, count)
     print(f"Successfully downloaded {downloaded_images_count} images.")
 
 

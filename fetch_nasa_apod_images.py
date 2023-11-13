@@ -9,7 +9,7 @@ from image_files_helpers import get_file_extension, save_image
 NASA_BASE_URL = "https://api.nasa.gov"
 
 
-def get_nasa_apod(api_key, count=5):
+def get_nasa_apod(api_key, images_directory, count=5):
     url = f"{NASA_BASE_URL}/planetary/apod"
     params = {
         "api_key": api_key,
@@ -23,13 +23,14 @@ def get_nasa_apod(api_key, count=5):
             continue
         hd_image_url = image["hdurl"]
         extension = get_file_extension(hd_image_url)
-        save_image(hd_image_url, f"nasa_apod_{key}{extension}")
+        save_image(hd_image_url, f"nasa_apod_{key}{extension}", images_directory)
     return len(images)
 
 
 def main():
     load_dotenv()
     nasa_api_key = os.environ["NASA_API_KEY"]
+    images_directory = os.environ["IMAGES_DIRECTORY"]
     parser = argparse.ArgumentParser(
         description="Script for downloading NASA APOD images."
     )
@@ -41,7 +42,7 @@ def main():
     )
     args = parser.parse_args()
     count = args.count
-    downloaded_images_count = get_nasa_apod(nasa_api_key, count)
+    downloaded_images_count = get_nasa_apod(nasa_api_key, images_directory, count)
     print(f"Successfully downloaded {downloaded_images_count} images.")
 
 
