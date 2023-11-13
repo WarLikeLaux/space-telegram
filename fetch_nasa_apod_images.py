@@ -23,7 +23,11 @@ def get_nasa_apod(api_key, images_directory, count=5):
             continue
         hd_image_url = image["hdurl"]
         extension = get_file_extension(hd_image_url)
-        save_image(hd_image_url, f"nasa_apod_{key}{extension}", images_directory)
+        save_image(
+            url=hd_image_url,
+            filename=f"nasa_apod_{key}{extension}",
+            images_directory=images_directory
+        )
     return len(images)
 
 
@@ -42,7 +46,11 @@ def main():
     )
     args = parser.parse_args()
     count = args.count
-    downloaded_images_count = get_nasa_apod(nasa_api_key, images_directory, count)
+    downloaded_images_count = get_nasa_apod(
+        api_key=nasa_api_key,
+        images_directory=images_directory,
+        count=count
+    )
     print(f"Successfully downloaded {downloaded_images_count} images.")
 
 
