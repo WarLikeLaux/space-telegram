@@ -20,8 +20,7 @@ def get_nasa_available_dates(api_key, count=5):
     return dates[-count:]
 
 
-def get_nasa_epic(api_key, images_directory, count=5):
-    dates = get_nasa_available_dates(api_key, count)
+def get_nasa_epic(api_key, images_directory, dates):
     params = {
         "api_key": api_key,
     }
@@ -55,7 +54,15 @@ def main():
     )
     args = parser.parse_args()
     count = args.count
-    downloaded_images_count = get_nasa_epic(nasa_api_key, images_directory, count)
+    nasa_available_dates = get_nasa_available_dates(
+        api_key=nasa_api_key,
+        count=count
+    )
+    downloaded_images_count = get_nasa_epic(
+        api_key=nasa_api_key,
+        images_directory=images_directory,
+        dates=nasa_available_dates
+    )
     print(f"Successfully downloaded {downloaded_images_count} images.")
 
 
