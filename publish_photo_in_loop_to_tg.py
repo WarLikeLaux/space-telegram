@@ -15,6 +15,7 @@ def main():
     load_dotenv()
     bot_token = os.environ["TG_BOT_TOKEN"]
     channel_id = os.environ["TG_CHANNEL_ID"]
+    images_directory = os.environ["IMAGES_DIRECTORY"]
     publish_frequency = int(os.getenv("PUBLISH_FREQUENCY_IN_MINUTES", 240))
     parser = argparse.ArgumentParser(
         description=(
@@ -24,11 +25,11 @@ def main():
     )
     parser.parse_args()
     bot = telegram.Bot(token=bot_token)
-    images_to_publish = get_images()
+    images_to_publish = get_images(images_directory)
     random.shuffle(images_to_publish)
     while True:
         if not images_to_publish:
-            images_to_publish = get_images()
+            images_to_publish = get_images(images_directory)
             random.shuffle(images_to_publish)
         photo_path = images_to_publish.pop()
         with open(photo_path, "rb") as photo:

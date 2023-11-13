@@ -12,6 +12,7 @@ def main():
     load_dotenv()
     bot_token = os.environ["TG_BOT_TOKEN"]
     channel_id = os.environ["TG_CHANNEL_ID"]
+    images_directory = os.environ["IMAGES_DIRECTORY"]
     bot = telegram.Bot(token=bot_token)
     parser = argparse.ArgumentParser(
         description=(
@@ -29,7 +30,10 @@ def main():
         ),
     )
     args = parser.parse_args()
-    photo_path = args.photo_path or random.choice(get_images())
+    if args.photo_path:
+        photo_path = args.photo_path
+    else:
+        photo_path = random.choice(get_images(images_directory))
     with open(photo_path, "rb") as photo:
         bot.send_photo(chat_id=channel_id, photo=photo)
     print(
